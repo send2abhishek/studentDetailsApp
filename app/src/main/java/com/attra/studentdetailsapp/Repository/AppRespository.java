@@ -43,4 +43,16 @@ public class AppRespository {
 
         return studentDatabase.studentDAO().getAllStudents();
     }
+
+    public void delData(final int id){
+
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                int count=studentDatabase.studentDAO().deleteById(id);
+                Log.d("Aryan", "data delted id - "+ count);
+            }
+        });
+
+    }
 }

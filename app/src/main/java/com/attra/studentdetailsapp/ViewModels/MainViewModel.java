@@ -28,4 +28,9 @@ public class MainViewModel extends AndroidViewModel {
 
         return appRespository.getAllStudents();
     }
+
+    public void Deletedata(int id){
+
+        appRespository.delData(id);
+    }
 }

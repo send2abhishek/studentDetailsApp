@@ -17,11 +17,14 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentViewHolder> {
     private Context context;
     private List<Students> studentsList;
     private LayoutInflater inflater;
+    private ListOnClick listOnClick;
 
-    public StudentAdapter(Context context, List<Students> studentsList) {
+    public StudentAdapter(Context context, List<Students> studentsList, ListOnClick listOnClick) {
         this.context = context;
         this.studentsList = studentsList;
         inflater=LayoutInflater.from(context);
+        this.listOnClick=listOnClick;
+
     }
 
     @NonNull
@@ -35,11 +38,17 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentViewHolder> {
     public void onBindViewHolder(@NonNull StudentViewHolder studentViewHolder, int pos) {
 
         Students students=studentsList.get(pos);
-        studentViewHolder.Populate(students);
+        studentViewHolder.Populate(students,listOnClick);
     }
 
     @Override
     public int getItemCount() {
         return studentsList.size();
     }
+
+
+   public interface ListOnClick{
+
+        void onItemTap(Students students);
+   }
 }

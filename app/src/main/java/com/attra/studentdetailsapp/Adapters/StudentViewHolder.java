@@ -19,10 +19,17 @@ public class StudentViewHolder extends RecyclerView.ViewHolder {
     }
 
 
-    public void Populate(Students students){
+    public void Populate(final Students students, final StudentAdapter.ListOnClick listOnClick){
 
         studentNameView.setText(students.getName());
         studentemailView.setText(students.getEmail());
         studentAddrView.setText(students.getAddress());
+
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listOnClick.onItemTap(students);
+            }
+        });
     }
 }

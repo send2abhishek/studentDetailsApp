@@ -20,7 +20,7 @@ import com.attra.studentdetailsapp.ViewModels.MainViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements StudentAdapter.ListOnClick {
 
     private StudentAdapter studentAdapter;
     private List<Students> studentsList;
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 studentsList.addAll(students);
 
                 if(studentAdapter==null){
-                    studentAdapter=new StudentAdapter(MainActivity.this,studentsList);
+                    studentAdapter=new StudentAdapter(MainActivity.this,studentsList,MainActivity.this);
                     recyclerView.setAdapter(studentAdapter);
                 }
 
@@ -85,5 +85,14 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void onItemTap(Students students) {
+
+
+        Toast.makeText(this,"Notes selected with id "+ students.getId(),Toast.LENGTH_SHORT).show();
+
+        viewModel.Deletedata(students.getId());
     }
 }
