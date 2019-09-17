@@ -50,7 +50,7 @@ public class AppRespository {
             @Override
             public void run() {
                 int count=studentDatabase.studentDAO().deleteById(id);
-                Log.d("Aryan", "data delted id - "+ count);
+                Log.d("Aryan", "data deleted id - "+ count);
             }
         });
 
